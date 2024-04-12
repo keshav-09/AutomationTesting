@@ -1,0 +1,48 @@
+package helloWorld;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WindowType; // Add this import for WindowType
+
+import java.util.Set;
+
+public class RedBusTest {
+
+    @Test
+    void testRedBusHelpLink() throws InterruptedException {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Initialize WebDriver (ChromeDriver in this case)
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // Navigate to the Redbus website
+            driver.get("https://www.redbus.in/");
+
+            // Open a new window or tab
+            driver.switchTo().newWindow(WindowType.TAB);
+
+            // Navigate to another page
+            driver.get("https://www.redbus.in/info/aboutus");
+
+            // Get handles of all windows
+            Set<String> windowHandles = driver.getWindowHandles();
+
+            // Loop through each window handle
+            for (String windowHandle : windowHandles) {
+                // Switch to the window
+                driver.switchTo().window(windowHandle);
+
+                // Print the title of the current window
+                System.out.println("Title of the current window: " + driver.getTitle());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close the browser
+            driver.quit();
+        }
+    }
+}

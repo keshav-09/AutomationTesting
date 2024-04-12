@@ -1,0 +1,43 @@
+package helloWorld;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import java.util.Set;
+
+public class MultipleWindowsExample {
+
+    public static void main(String[] args) {
+        // Set the path to the GeckoDriver executable
+        System.setProperty("webdriver.gecko.driver", "path/to/geckodriver");
+
+        // Create an instance of FirefoxDriver with options
+        FirefoxOptions options = new FirefoxOptions();
+        WebDriver driver = new FirefoxDriver(options);
+
+        try {
+            // Navigate to the webpage with multiple windows
+            driver.get("https://www.tutorialspoint.com");
+
+            // Perform an action that opens a new window, such as clicking a link
+            driver.findElement(By.linkText("Open New Window")).click();
+
+            // Get all window handles
+            Set<String> windowHandles = driver.getWindowHandles();
+
+            // Iterate through each window handle
+            for (String windowHandle : windowHandles) {
+                // Switch to the desired window
+                driver.switchTo().window(windowHandle);
+                // Perform actions on the window
+                System.out.println("Title of the window: " + driver.getTitle());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close the driver instance
+            driver.quit();
+        }
+    }
+}

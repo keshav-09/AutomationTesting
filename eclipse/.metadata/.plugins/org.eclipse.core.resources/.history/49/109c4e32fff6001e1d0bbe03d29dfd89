@@ -1,0 +1,121 @@
+package helloWorld;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Testseleniums {
+    
+    @Test
+    public void testDragAndDrop() {
+        WebDriver driver = new FirefoxDriver();
+        
+        try {
+            // Open the webpage
+            driver.get("https://jqueryui.com/droppable/");
+            
+            // Switch to the iframe containing the draggable elements
+            driver.switchTo().frame(driver.findElement(By.cssSelector(".demo-frame")));
+            
+            // Locate the draggable element
+            WebElement draggable = driver.findElement(By.id("draggable"));
+            
+            // Locate the droppable element
+            WebElement droppable = driver.findElement(By.id("droppable"));
+            
+            // Perform drag and drop
+            Actions actions = new Actions(driver);
+            actions.dragAndDrop(draggable, droppable).build().perform();
+            
+            // Add assertions or further actions if needed
+            // For example, you can verify if the text has changed after the drag and drop operation.
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close the browser
+            driver.quit();
+        }
+    }
+}
+
+//        try {
+//            driver.get("http://localhost:4200/doctorLogin");
+//            
+//            // Enter email and password
+//            driver.findElement(By.id("email")).sendKeys("keshav09khandelwal@gmail.com");
+//            
+//            driver.findElement(By.id("password")).sendKeys("@flysky123");
+//          
+//            // Click the login button
+//            driver.findElement(By.id("loginButton")).click();
+//
+//
+//            // Add assertions or further actions if needed
+//        } catch (Exception e) {
+//            fail("An exception occurred: " + e.getMessage());
+//        } finally {
+//            driver.quit();
+//        }
+//    }
+}
+
+
+//package helloWorld;
+//
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//import org.junit.jupiter.api.Test;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+//
+//public class Testseleniums {
+//    
+//    @Test
+//    public void testCalculatorSearch() {
+//        WebDriver driver = new FirefoxDriver();
+//        try {
+//            driver.get("https://www.calculator.net/");
+//            driver.findElement(By.id("calcSearchTerm")).sendKeys("sadadad");
+//            driver.findElement(By.linkText("Mortgage Calculator")).click();
+//            // Add assertions or further actions if needed
+////            button[@name='calcSearchTerm']
+////            //span[@id="bluebtn"]
+//          //a[contains(@href, 'mortgage-calculator')]
+//        } catch (Exception e) {
+//            fail("An exception occurred: " + e.getMessage());
+//        } finally {
+//            driver.quit();
+//        }
+//    }
+//}
+
+//driver.get("https://www.calculator.net/");
+//driver.findElement(By.xpath("//input[@id='calcSearchTerm']")).sendKeys("sadadad");
+//// 
+// driver.findElement(By.xpath("//span[@id='bluebtn']")).click();
+//// 
+// driver.findElement(By.xpath("//div[@id='sciOutPut']")).click();
+//// 
+//// // ID Locator
+// driver.findElement(By.id("calcSearchTerm")).sendKeys("abcd");
+//// // Class Name Locator
+// driver.findElement(By.className("homelisttile"));
+////
+////
+//// // Tag Name Locator
+// driver.findElement(By.tagName("body"));
+////
+//// // Link Text Locator
+// driver.findElement(By.linkText("about us"));
+////
+////
+//// // XPath Locator 
+// driver.findElement(By.xpath("//a[contains(text(),'privacy policy')]"));
+// driver.findElement(By.linkText("Mortgage Calculator")).click();
+// driver.findElement(By.xpath("(//SPAN[@class='rbmark'])[2]")).click();
+

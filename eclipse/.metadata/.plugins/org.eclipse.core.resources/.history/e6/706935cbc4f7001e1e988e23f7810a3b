@@ -1,0 +1,53 @@
+package helloWorld;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+class LoginCapstone {
+
+    @Test
+    void testLogin() {
+        // Initialize WebDriver
+        WebDriver driver = new FirefoxDriver();
+
+        try {
+            // Open the login page
+            driver.get("http://localhost:4200/doctorLogin");
+            
+            // Enter email and password (assuming correct credentials)
+            WebElement emailInput = driver.findElement(By.id("email"));
+            emailInput.sendKeys("keshav09khandelwal@gmail.com");
+            
+            WebElement passwordInput = driver.findElement(By.id("password"));
+            passwordInput.sendKeys("@flysky123");
+            
+            // Click the login button
+            WebElement loginButton = driver.findElement(By.id("loginButton"));
+            loginButton.click();
+
+            // Add a wait for error message to appear
+            Thread.sleep(2000); // Adjust as needed
+            
+            // Check if error message for email is displayed
+            WebElement emailError = driver.findElement(By.id("email"));
+            assertTrue(emailError.isDisplayed(), "Email error message is not displayed");
+
+            // Check if error message for password is displayed
+            WebElement passwordError = driver.findElement(By.id("password"));
+            assertTrue(passwordError.isDisplayed(), "Password error message is not displayed");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("An exception occurred: " + e.getMessage());
+        } finally {
+            // Close the WebDriver instance
+            driver.quit();
+        }
+    }
+
+}

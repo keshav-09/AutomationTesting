@@ -1,0 +1,36 @@
+package helloWorld;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+class RedBusTest {
+
+    @Test
+    void testRedBusHelpLink() {
+        // Initialize WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open the redBus website
+        driver.get("https://www.redbus.com/");
+
+        // Click on the "Help" link
+        driver.findElement(By.xpath("//a[@href='/info/redcare'][text()='Help']")).click();
+
+        // Wait for the new page to load by waiting for an element on the new page
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class='icon-close']")));
+
+        // Click on the close icon
+        driver.findElement(By.xpath("//i[@class='icon-close']")).click();
+
+        // Close the WebDriver instance
+        driver.quit();
+    }
+}
