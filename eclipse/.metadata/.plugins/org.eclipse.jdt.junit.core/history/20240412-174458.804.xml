@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LoginCapstone (1)" project="helloWorld" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="Capstone.LoginCapstone" time="10.049" displayname="LoginCapstone" uniqueid="[engine:junit-jupiter]/[class:Capstone.LoginCapstone]">
+    <testcase name="testLogin" classname="Capstone.LoginCapstone" time="10.049" displayname="testLogin()" uniqueid="[engine:junit-jupiter]/[class:Capstone.LoginCapstone]/[method:testLogin()]"/>
+  </testsuite>
+</testrun>

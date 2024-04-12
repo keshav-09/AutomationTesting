@@ -1,0 +1,14 @@
+package Capstone;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class LoginCapstone {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
